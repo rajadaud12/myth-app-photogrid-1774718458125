@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 import 'package:photogrid_app/utils/colors.dart'; 
 
 class HomeScreen extends StatefulWidget {
@@ -18,13 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 40),
                 Row(
                   children: [
                     Text(
                       'Hi, David ',
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
+                        color: AppColors.textColor,
                       ),
                     ),
                     Text('👋', style: TextStyle(fontSize: 24)),
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Text(
                   'Explore the world',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 16,
                     color: AppColors.textColor.withOpacity(0.7),
                   ),
@@ -64,14 +66,14 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   'Popular places',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   'View all',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                     fontSize: 14,
                     color: AppColors.primaryColor,
                   ),
@@ -84,11 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                ...[
-                  _buildTab('Most Viewed', true),
-                  _buildTab('Nearby', false),
-                  _buildTab('Latest', false),
-                ],
+                _buildTab('Most Viewed', true),
+                SizedBox(width: 8),
+                _buildTab('Nearby', false),
+                SizedBox(width: 8),
+                _buildTab('Latest', false),
               ],
             ),
           ),
@@ -98,20 +100,18 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                ...[
-                  _buildPlaceCard(
-                    'Mount Fuji, Tokyo',
-                    'Tokyo, Japan',
-                    '4.8',
-                    'https://example.com/mount-fuji.jpg',
-                  ),
-                  _buildPlaceCard(
-                    'Andes Mountain',
-                    'South, America',
-                    '4.5',
-                    'https://example.com/andes.jpg',
-                  ),
-                ],
+                _buildPlaceCard(
+                  'Mount Fuji, Tokyo',
+                  'Tokyo, Japan',
+                  '4.8',
+                  'https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=400&h=300&fit=crop',
+                ),
+                _buildPlaceCard(
+                  'Andes Mountain',
+                  'South, America',
+                  '4.5',
+                  'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&h=300&fit=crop',
+                ),
               ],
             ),
           ),
@@ -144,7 +144,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildTab(String text, bool isActive) {
     return Container(
-      margin: EdgeInsets.only(right: 8),
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: isActive ? AppColors.buttonColor : AppColors.cardColor,
@@ -152,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Text(
         text,
-        style: GoogleFonts.poppins(
+        style: TextStyle(
           color: isActive ? AppColors.buttonTextColor : AppColors.textColor,
           fontSize: 12,
         ),
@@ -191,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.poppins(
+                    style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -203,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: 4),
                       Text(
                         location,
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                         ),
@@ -213,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(width: 4),
                       Text(
                         rating,
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 12,
                         ),
